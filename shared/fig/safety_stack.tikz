@@ -1,0 +1,8 @@
+\begin{tikzpicture}[node distance=7mm]
+\node[draw,rounded corners,fill=gray!10] (lint) {Clinical Lint/Schema};
+\node[draw,rounded corners,fill=yellow!15,below=of lint] (dose) {Dose/Range Guard};
+\node[draw,rounded corners,fill=yellow!15,below=of dose] (ddi) {Drug–Drug Interaction};
+\node[draw,rounded corners,fill=yellow!15,below=of ddi] (unc) {Uncertainty/Abstention};
+\node[draw,rounded corners,fill=green!15,below=of unc] (audit) {Audit + Provenance};
+\draw[->] (lint) -- (dose) -- (ddi) -- (unc) -- (audit);
+\end{tikzpicture}
