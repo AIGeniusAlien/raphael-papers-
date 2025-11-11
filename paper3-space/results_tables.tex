@@ -1,0 +1,13 @@
+\begin{table}[t]\centering
+\caption{Mission risk detection (mean over seeds).}
+\label{tab:space}
+\begin{tabular}{lccc}
+\toprule
+Method & AUROC $\uparrow$ & FPR@90\%TPR $\downarrow$ & Abstain Rate (\%) \\
+\midrule
+Threshold rules & 0.71 & 0.42 & 0.0 \\
+Generic LLM & 0.76 & 0.37 & 2.1 \\
+\model{} (adapted) & \textbf{0.84} & \textbf{0.21} & 9.4 \\
+\bottomrule
+\end{tabular}
+\end{table}
