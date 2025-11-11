@@ -1,7 +1,0 @@
-\begin{tikzpicture}[node distance=6mm, font=\small]
-\node[draw,rounded corners,fill=green!10,align=center] (rag) {Guideline RAG};
-\node[draw,rounded corners,fill=red!10,below=of rag,align=center] (rules) {Dose \& DDI Rules};
-\node[draw,rounded corners,fill=yellow!15,below=of rules,align=center] (unc) {Uncertainty \& Abstain};
-\node[draw,rounded corners,fill=blue!10,below=of unc,align=center] (prov) {Provenance \& Audit};
-\draw[->] (rag) -- (rules) -- (unc) -- (prov);
-\end{tikzpicture}
