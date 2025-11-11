@@ -1,0 +1,11 @@
+\begin{tikzpicture}[font=\small, node distance=10mm]
+\node[draw,rounded corners,fill=blue!6,align=center] (inputs) {Inputs\\ Text • Voice • Imaging • FHIR};
+\node[draw,rounded corners,fill=orange!10,align=center,below=of inputs] (rag) {Guideline RAG\\ (ADA/AHA/CDC/WHO)};
+\node[draw,rounded corners,fill=green!10,align=center,below=of rag] (llm) {Reasoning Core\\ (Router: OpenAI ↔ On-prem)};
+\node[draw,rounded corners,fill=red!10,align=center,below=of llm] (safety) {Safety Gates\\ Dosing • DDI • Uncertainty • Abstain};
+\node[draw,rounded corners,fill=purple!10,align=center,below=of safety] (outputs) {Outputs\\ Draft notes • Plans • Citations • Read-back};
+\draw[->] (inputs) -- (rag);
+\draw[->] (rag) -- (llm);
+\draw[->] (llm) -- (safety);
+\draw[->] (safety) -- (outputs);
+\end{tikzpicture}
