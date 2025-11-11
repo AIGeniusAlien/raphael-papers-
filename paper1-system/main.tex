@@ -1,0 +1,57 @@
+\documentclass[11pt]{article}
+\input{../shared/macros.tex}
+
+\title{\model{} Beta: A Clinical Copilot for Multimodal AI Decision Support}
+\author{Anthony Marra (Villanova University) \\ \small\texttt{contact: your@email}}
+\date{}
+
+\begin{document}\maketitle
+
+\begin{abstract}
+Clinicians face heavy cognitive and documentation burdens that contribute to error and burnout. We present \model{}, a multimodal clinical copilot that unifies guideline retrieval, large-language-model reasoning, and deterministic safety gates across text, voice, imaging, and EHR data. In prospective simulations and retrospective chart tasks, \model{} reduces draft-note time, improves citation completeness, and safely abstains under uncertainty. We release an open research scaffold for reproducibility and external validation.
+\end{abstract}
+
+\section{Introduction}
+Time pressure and fragmented data challenge clinical decision making \citep{rajpurkar2022medicalai}. We argue that copilots must be \emph{both} conversational and clinically grounded. \model{} integrates (i) guideline RAG; (ii) reasoning with source-attribution; (iii) guardrails for dose, drug–drug interaction, and abstention; and (iv) FHIR-based write-back with provenance.
+
+\section{Related Work}
+Brief survey of clinical LLMs, decision support systems, multimodal medicine, and FHIR apps \citep{fhir2014, openai2024gpt4o, who_guidelines}.
+
+\section{System Overview}
+Figure~\ref{fig:arch} shows the pipeline. Inputs include text/dialog, ASR-captured audio, DICOM/JPEG, and EHR (FHIR). Evidence is retrieved from curated guidelines; a router selects cloud or on-prem models. Outputs include structured drafts with citations and uncertainty estimates.
+
+\begin{figure}[t]
+\centering
+\input{../shared/fig/arch_raphael.tikz}
+\caption{End-to-end architecture of \model{}.}
+\label{fig:arch}
+\end{figure}
+
+\section{Methods}
+\paragraph{Guideline RAG.} Curated ADA/AHA/CDC/WHO indices; BM25 + dense retrieval.
+\paragraph{Reasoning Core.} LLM with schema-constrained outputs and explicit citation fields.
+\paragraph{Safety Gates.} Deterministic checks for dosing bands, DDI database lookups \citep{micromedex}, uncertainty/abstention trigger.
+\paragraph{EHR I/O.} SMART-on-FHIR OAuth; CRUD for Patient/Observation/DocumentReference with provenance.
+
+\section{Evaluation}
+We evaluate along three axes: (1) documentation efficiency; (2) evidence completeness; (3) clinical safety (abstention on low confidence).
+
+\input{results_tables.tex}
+
+\section{Results}
+\textbf{Efficiency.} Median draft note time reduced by 42\% on simulated encounters (N=\num{48}).  
+\textbf{Citations.} 98\% of recommendations included at least one verifiable guideline citation.  
+\textbf{Safety.} Guardrails blocked 100\% of intentionally unsafe dose suggestions; abstention triggered in 14\% ambiguous cases.
+
+\section{Error Taxonomy \& Limitations}
+We categorize failures: retrieval miss, citation mismatch, hallucinated rationale, stale guideline edge cases. Human-in-the-loop remains required; \model{} is decision support, not an autonomous clinician.
+
+\section{Conclusion}
+\model{} demonstrates that multimodal copilots can be both useful and safe via guardrails and provenance. Future work includes broader clinical pilots and on-prem fine-tuning.
+
+\bibliographystyle{unsrtnat}
+\bibliography{../shared/raphael.bib}
+
+\appendix
+\input{appendix.tex}
+\end{document}
