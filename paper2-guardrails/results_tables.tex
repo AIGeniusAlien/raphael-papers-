@@ -1,0 +1,28 @@
+\begin{table}[t]\centering
+\caption{Ablation on guardrail layers (higher is better).}
+\label{tab:ablation}
+\begin{tabular}{lccc}
+\toprule
+Configuration & Hazard Block (\%) & Useful Answers (\%) & Median Latency (s) \\
+\midrule
+No guardrails & 12.1 & \textbf{92.3} & \textbf{0.9} \\
++ Schema lint & 34.8 & 90.5 & 1.0 \\
++ Dose/Range  & 82.4 & 89.2 & 1.2 \\
++ DDI check   & 93.1 & 88.9 & 1.5 \\
++ Uncertainty/Abstain (full) & \textbf{97.2} & 86.0 & 1.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]\centering
+\caption{Reliability (ECE) and AUROC for hazard classification.}
+\label{tab:reliability}
+\begin{tabular}{lcc}
+\toprule
+Model & ECE $\downarrow$ & AUROC (hazard) $\uparrow$ \\
+\midrule
+Generic LLM & 0.21 & 0.68 \\
+\model{} + Uncertainty & \textbf{0.07} & \textbf{0.89} \\
+\bottomrule
+\end{tabular}
+\end{table}
