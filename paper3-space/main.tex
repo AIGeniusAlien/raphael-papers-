@@ -1,0 +1,44 @@
+\documentclass[11pt]{article}
+\input{../shared/macros.tex}
+\title{Multimodal AI for Astronaut Health Monitoring: Adapting \model{} to Space Medicine}
+\author{Anthony Marra (Villanova University)}
+\date{}
+\begin{document}\maketitle
+
+\begin{abstract}
+We adapt the \model{} clinical copilot for astronaut health scenarios using simulated EVA/bedrest datasets and multimodal biosensors. A domain-adaptation pipeline enables robust reasoning under microgravity-like shifts. Results show improved alerting for orthostatic intolerance and fatigue risk while maintaining strict abstention on uncertain cases.
+\end{abstract}
+
+\section{Introduction}
+Space missions demand autonomous yet safe medical decision support.
+
+\section{Related Work}
+Operational medicine, biomedical monitoring in spaceflight.
+
+\section{Methods}
+Figure~\ref{fig:space} outlines the pipeline: simulation $\rightarrow$ sensor fusion $\rightarrow$ adapter tuning $\rightarrow$ mission-specific evaluation.
+
+\begin{figure}[t]
+\centering
+\input{../shared/fig/space_pipeline.tikz}
+\caption{Domain adaptation pipeline for space medicine.}
+\label{fig:space}
+\end{figure}
+
+\section{Experiments}
+Simulated datasets (EVA, CO\textsubscript{2} exposure); baselines include threshold rules and generic LLM.
+
+\input{results_tables.tex}
+
+\section{Results}
+Our adapted model improves early warning detection with controlled false alarms, preserving abstention in ambiguous vitals.
+
+\section{Discussion}
+Implications for deep space autonomy; integration with vehicle telemetry.
+
+\bibliographystyle{unsrtnat}
+\bibliography{../shared/raphael.bib}
+
+\appendix
+\input{appendix.tex}
+\end{document}
