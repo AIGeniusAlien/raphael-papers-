@@ -1,0 +1,27 @@
+\begin{table}[t]\centering
+\caption{Documentation efficiency on simulated outpatient encounters (median minutes).}
+\label{tab:efficiency}
+\begin{tabular}{lccc}
+\toprule
+Method & Note Time $\downarrow$ & Keystrokes $\downarrow$ & Edits / Note $\downarrow$\\
+\midrule
+Baseline (manual) & 14.2 & 1280 & 23 \\
+Generic LLM (no RAG) & 10.7 & 890 & 19 \\
+\model{} (ours) & \textbf{8.2} & \textbf{540} & \textbf{12} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]\centering
+\caption{Safety guardrail effectiveness (challenge set; \% blocked or abstained).}
+\label{tab:safety}
+\begin{tabular}{lcc}
+\toprule
+Scenario & Unsafe Action Blocked $\uparrow$ & Abstain on Ambiguity $\uparrow$ \\
+\midrule
+Overdose prompts & 100\% & 0\% \\
+Drug–drug interaction traps & 97\% & 2\% \\
+Ambiguous vitals/labs & 0\% & 31\% \\
+\bottomrule
+\end{tabular}
+\end{table}
