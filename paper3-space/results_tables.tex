@@ -1,13 +1,16 @@
-\begin{table}[t]\centering
-\caption{Mission risk detection (mean over seeds).}
-\label{tab:space}
-\begin{tabular}{lccc}
+\section*{Extended Results}
+\label{sec:extended}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcccc}
 \toprule
-Method & AUROC $\uparrow$ & FPR@90\%TPR $\downarrow$ & Abstain Rate (\%) \\
+Condition & AUROC↑ & F1↑ & TTA (min)↓ & Accuracy↑ \\
 \midrule
-Threshold rules & 0.71 & 0.42 & 0.0 \\
-Generic LLM & 0.76 & 0.37 & 2.1 \\
-\model{} (adapted) & \textbf{0.84} & \textbf{0.21} & 9.4 \\
+Arrhythmia & 0.86 & 0.78 & 7.4 & 91.2 \\
+Dehydration & 0.83 & 0.75 & 9.1 & 88.6 \\
+Hypoxia & 0.89 & 0.81 & 5.6 & 93.0 \\
 \bottomrule
 \end{tabular}
+\caption{Synthetic domain-transfer results in simulated astronaut scenarios.}
 \end{table}
