@@ -1,4 +1,5 @@
-\documentclass[10pt]{article}
+% paper1/main.tex
+\documentclass[11pt]{article}
 \input{../shared/tex/preamble}
 
 \title{Raphael Beta: A Clinical Copilot for Multimodal AI Decision Support}
@@ -9,58 +10,74 @@
 \maketitle
 
 \begin{abstract}
-We present \raphael, a clinical copilot that integrates retrieval over curated
-guidelines, large-language-model reasoning, and deterministic safety guardrails
-for decision support. The system supports voice, text, and image inputs, provides
-source-linked justifications, and abstains under uncertainty. We report pilot latency,
-factuality, and safety outcomes on synthetic and public benchmarks.
+We present \textit{Raphael}, a clinical copilot that integrates retrieval over curated guidelines, large-language-model reasoning, and deterministic safety guardrails for decision support. The system supports voice, text, and image inputs, provides source-linked justifications, and abstains under uncertainty. We report pilot latency, factuality, and safety outcomes on synthetic and public benchmarks.
 \end{abstract}
 
 \section{Introduction}
-\label{sec:intro}
-% Problem, contributions (bulleted), Figure~\ref{fig:arch} reference.
+Clinicians face cognitive and documentation load. Multimodal LLM systems can assist when designed for reliability, transparency, and integration.
 
 \section{Related Work}
-\label{sec:related}
-% Clinical LLMs, CDS systems, multimodal triage.
+Clinical LLMs, CDS systems, multimodal triage.
 
 \section{System Architecture}
-\label{sec:arch}
-% Diagram + narrative
 \begin{figure}[t]
-  \centering
-  \includegraphics[width=\linewidth]{../shared/figs/fig_architecture_placeholder.pdf}
-  \caption{Raphael architecture: RAG, safety gates, EHR connectors, multimodal I/O.}
-  \label{fig:arch}
+\centering
+\begin{tikzpicture}[
+  node distance=8mm and 10mm,
+  process/.style={draw, rounded corners=2pt, align=center, minimum width=26mm, minimum height=8mm, fill=gray!10},
+  io/.style={draw, rounded corners=2pt, align=center, minimum width=26mm, minimum height=8mm, fill=blue!8},
+  store/.style={draw, rounded corners=2pt, align=center, minimum width=26mm, minimum height=8mm, fill=green!8},
+  gate/.style={draw, rounded corners=2pt, align=center, minimum width=26mm, minimum height=8mm, fill=red!8},
+  >=Latex
+]
+\node[io] (voice) {Voice \\ (WebRTC/ASR)};
+\node[io, right=of voice] (text) {Text UI};
+\node[io, right=of text] (image) {Images \\ (DICOM/JPEG)};
+\node[store, below=of text] (ehr) {SMART-on-FHIR \\ EHR API};
+\node[store, left=of ehr] (kb) {Guidelines / KB \\ (RAG index)};
+\node[process, below=of kb] (retrieval) {Retriever};
+\node[process, right=10mm of retrieval] (llm) {LLM Reasoning \\ (prompt + tools)};
+\node[gate, right=of llm] (safety) {Safety Gates \\ (factuality, abstain)};
+\node[io, right=of safety] (outputs) {Outputs \\ (plan, summary, orders)};
+\draw[->] (voice.south) |- (retrieval.west);
+\draw[->] (text.south)  |- (retrieval.north);
+\draw[->] (image.south) |- (retrieval.east);
+\draw[->] (kb) -- (retrieval);
+\draw[->] (ehr) |- (llm);
+\draw[->] (retrieval) -- (llm);
+\draw[->] (llm) -- (safety);
+\draw[->] (safety) -- (outputs);
+\node[draw, rounded corners=2pt, fit=(voice)(text)(image), inner sep=3mm, label=above:{\small Inputs}] {};
+\node[draw, rounded corners=2pt, fit=(kb)(retrieval)(ehr), inner sep=3mm, label=left:{\small Retrieval \& EHR}] {};
+\node[draw, rounded corners=2pt, fit=(llm)(safety), inner sep=3mm, label=below:{\small Reasoning \& Guardrails}] {};
+\end{tikzpicture}
+\caption{Raphael architecture: multimodal inputs, RAG, LLM reasoning, safety guardrails, and EHR integration.}
+\label{fig:arch}
 \end{figure}
 
 \section{Safety and Guardrails}
-\label{sec:safety}
-% Dose checks, DDI, abstention, uncertainty.
+Deterministic checks for guideline conformance, uncertainty-aware abstention, prohibition of unsafe actions.
 
 \section{Evaluation}
-\label{sec:eval}
-% Metrics table
-\begin{table}[h]
+\begin{table}[t]
 \centering
-\begin{tabular}{lccc}
+\begin{tabular}{lcc}
 \toprule
-Metric & Value & CI & Notes \\
+Metric & Value & Notes \\
 \midrule
-Latency (p50) & \SI{1.3}{s} & ±0.2 & synthetic \\
-Factuality@\SI{0.5}{} & 0.81 & ±0.03 & guideline QA \\
-Abstain-precision & 0.92 & ±0.02 & OOD prompts \\
+Latency (p50) & 1.3\,s & synthetic \\
+Factuality & 0.91 & QA \\
+Abstain precision & 0.92 & uncertainty prompts \\
 \bottomrule
 \end{tabular}
-\caption{Prototype metrics (replace with real numbers).}
+\caption{Prototype metrics. Replace with final results.}
 \end{table}
 
 \section{Discussion}
-\label{sec:disc}
-% Limitations, ethics.
+Limitations and deployment considerations.
 
 \section{Conclusion}
-\label{sec:conc}
+Summary and next steps.
 
 \bibliographystyle{unsrt}
 \bibliography{../shared/bib/references}
