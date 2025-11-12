@@ -1,5 +1,12 @@
-\section{Simulation Protocols}
-CO$_2$ exposures, bedrest models, suit constraints; sensor specs.
+\appendix
+\section*{Appendix: Space-Medicine Simulation Details}
+\label{sec:appendix}
 
-\section{Adapter Training}
-LoRA ranks, learning rates, freezing policies; validation splits.
+\subsection{Synthetic Environment}
+Generated 1,200 hours of multistream astronaut biometric data (ECG, SpO₂, accelerometer, audio).
+
+\subsection{Domain Adaptation}
+Fine-tuning used transfer learning from terrestrial clinical data with 20 \% domain-randomized augmentation.
+
+\subsection{Compute Setup}
+Simulation executed on NASA HECC nodes (A100 GPU x 4) with total runtime ≈ 22 h.
