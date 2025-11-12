@@ -1,72 +1,35 @@
 \documentclass[11pt]{article}
 \input{../shared/tex/preamble}
-\usepackage{tikz}
-\usepackage{booktabs}
 
 \title{Multimodal AI for Astronaut Health Monitoring: Adapting \textit{Raphael}}
 \author{Anthony Marra\\Villanova University}
 \date{}
 
-\begin{document}
-\maketitle
+\begin{document}\maketitle
 
 \begin{abstract}
-We adapt a clinical AI copilot architecture for astronaut health monitoring during long-duration space missions. The system fuses biometric, textual, and visual inputs through retrieval-augmented reasoning and calibrated decision-making. Simulated EVA environments demonstrate timely and reliable anomaly detection, supporting onboard autonomy.
+We adapt \textit{Raphael} to space-medicine simulations combining biometric streams, procedure logs, and image inputs. We describe domain transfer using synthetic data and results on simulated off-nominal events.
 \end{abstract}
 
-\section{Introduction}
-Space medicine requires autonomous, multimodal AI systems capable of monitoring health metrics and issuing early alerts. \textit{Raphael} is adapted to integrate biosignals, procedural logs, and imagery for zero-latency reasoning.
-
-\section{Related Work}
-Prior biomedical AI frameworks and human-in-the-loop LLM architectures have inspired domain transfer to extraterrestrial settings.
+\section{Introduction}\section{Related Work}
 
 \section{Methods}
 \subsection{Domain Adaptation}
-Fine-tuning combines terrestrial datasets and synthetic EVA telemetry.
-\subsection{System Pipeline}
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}[
-  node distance=9mm and 10mm,
-  box/.style={draw, rounded corners=2pt, minimum height=7mm, inner sep=2.5pt}
-]
-\node[box, fill=blue!8] (bio) {Biometrics};
-\node[box, right=of bio] (img) {Images};
-\node[box, below=of img] (text) {Logs/Notes};
-\node[box, right=of img] (fusion) {Fusion \& RAG};
-\node[box, right=of fusion, fill=green!8] (llm) {Calibrated LLM};
-\node[box, right=of llm, fill=blue!8] (out) {Alerts / Actions};
-\draw[->] (bio)--(fusion);
-\draw[->] (img)--(fusion);
-\draw[->] (text)--(fusion);
-\draw[->] (fusion)--(llm)--(out);
-\end{tikzpicture}
-\caption{Multimodal astronaut health-monitoring pipeline adapted from Raphael.}
-\label{fig:spacearch}
-\end{figure}
+\subsection{Synthetic Environment (ISS/HRP-inspired)}
 
 \section{Results}
-\begin{table}[t]
-\centering
-\begin{tabular}{lccc}
-\toprule
-Scenario & AUROC↑ & F1↑ & Time-to-Alert (s)↓ \\
-\midrule
-Hypoxia & 0.91 & 0.82 & 7.4 \\
-Arrhythmia & 0.88 & 0.79 & 6.8 \\
-Dehydration & 0.85 & 0.76 & 9.1 \\
-Suit Leak & 0.92 & 0.83 & 5.9 \\
+\begin{table}[t]\centering\small
+\begin{tabular}{lccc}\toprule
+Scenario & AUROC $\uparrow$ & TTA (s) $\downarrow$ & Notes \\\midrule
+Arrhythmia (MIT-BIH) & 0.89 & 7.4 & ECG \\
+Hypoxia (synthetic) & 0.86 & 9.5 & SpO$_2$ + HR \\
+Dehydration (synthetic) & 0.83 & 8.6 & HRV \\
 \bottomrule
 \end{tabular}
-\caption{Prototype results on simulated EVA anomaly detection.}
-\label{tab:eva}
+\caption{Simulated detection; replace with real numbers.}
 \end{table}
 
-\section{Discussion}
-The multimodal design ensures robust detection under noisy telemetry and provides uncertainty-aware alerts.
-
-\section{Conclusion}
-This adaptation illustrates a feasible path toward autonomous, safe, and explainable astronaut health copilots.
+\section{Discussion}\section{Conclusion}
 
 \bibliographystyle{unsrt}
 \bibliography{../shared/bib/references}
