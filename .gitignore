@@ -1,17 +1,15 @@
 # LaTeX
 *.aux
 *.bbl
-*.bcf
 *.blg
-*.fdb_latexmk
-*.fls
 *.log
 *.out
-*.run.xml
 *.toc
+*.fls
+*.fdb_latexmk
 *.synctex.gz
-*.nav
-*.snm
-# OS
+*.pdf
+# macOS
 .DS_Store
-Thumbs.db
+# zips
+*.zip
