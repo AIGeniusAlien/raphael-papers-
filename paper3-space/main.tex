@@ -1,6 +1,10 @@
 \documentclass[11pt]{article}
 \input{../shared/tex/preamble}
 
+% Local macros to avoid undefined commands
+\newcommand{\AUROC}{\textsc{AUROC}}
+\newcommand{\CI}{\textsc{CI}}
+
 \title{Multimodal AI for Astronaut Health Monitoring: Adapting \textit{Raphael} to Space Medicine}
 \author{Anthony Marra\\Villanova University}
 \date{}
@@ -9,32 +13,32 @@
 \maketitle
 
 \begin{abstract}
-We adapt \textit{Raphael} to space-medicine simulations combining biometric streams, procedure logs, and image inputs. We outline domain transfer, synthetic data generation, and results on simulated off-nominal events.
+We adapt \textit{Raphael} to space\-medicine simulations combining biometric streams, procedure logs, and image inputs. We outline domain transfer, synthetic data generation, and report simulated off\-nominal detection.
 \end{abstract}
 
 \section{Introduction}\section{Related Work}
 
 \section{Methods}
-\subsection{Domain Adaptation Pipeline}
-\subsection{Synthetic EM Setup}
+\subsection{Domain Adaptation Pipeline}\subsection{Synthetic Environment Setup}
 
 \section{Results}
 \begin{table}[t]
 \centering
 \begin{tabular}{lcc}
 \toprule
-Scenario & \AUROC & Time-to-Alert (s)\\
+Scenario & \AUROC~$\uparrow$ & Time\-to\-Alert (s)~$\downarrow$ \\
 \midrule
 Arrhythmia & 0.89 & 7.4 \\
-Hypoxia & 0.88 & 5.9 \\
+Dehydration & 0.86 & 5.9 \\
+Hypoxia & 0.91 & 6.3 \\
 \bottomrule
 \end{tabular}
 \caption{Simulated results (replace with real).}
+\label{tab:sim}
 \end{table}
 
 \section{Discussion}\section{Conclusion}
 
 \bibliographystyle{unsrt}
 \bibliography{../shared/bib/references}
-
 \end{document}
