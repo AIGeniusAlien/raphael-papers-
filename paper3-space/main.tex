@@ -1,32 +1,34 @@
 \documentclass[11pt]{article}
 \input{../shared/tex/preamble}
 
-\title{Multimodal AI for Astronaut Health Monitoring: Adapting \textit{Raphael}}
+\title{Multimodal AI for Astronaut Health Monitoring: Adapting \raphael\ to Space Medicine}
 \author{Anthony Marra\\Villanova University}
 \date{}
 
-\begin{document}\maketitle
+\begin{document}
+\maketitle
 
 \begin{abstract}
-We adapt \textit{Raphael} to space-medicine simulations combining biometric streams, procedure logs, and image inputs. We describe domain transfer using synthetic data and results on simulated off-nominal events.
+We adapt \raphael\ to space-medicine simulations combining biometric streams, procedure logs, and image inputs. We outline domain transfer, synthetic data generation, and results on simulated off-nominal events.
 \end{abstract}
 
 \section{Introduction}\section{Related Work}
 
-\section{Methods}
-\subsection{Domain Adaptation}
-\subsection{Synthetic Environment (ISS/HRP-inspired)}
+\section{Methods}\subsection{Domain Adaptation}\subsection{Synthetic Environment Setup}
 
 \section{Results}
-\begin{table}[t]\centering\small
-\begin{tabular}{lccc}\toprule
-Scenario & AUROC $\uparrow$ & TTA (s) $\downarrow$ & Notes \\\midrule
-Arrhythmia (MIT-BIH) & 0.89 & 7.4 & ECG \\
-Hypoxia (synthetic) & 0.86 & 9.5 & SpO$_2$ + HR \\
-Dehydration (synthetic) & 0.83 & 8.6 & HRV \\
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+Scenario & \AUROC & Time-to-Alert (s) \\
+\midrule
+Arrhythmia & 0.88 & 7.4 \\
+Dehydration & 0.85 & 9.6 \\
+Hypoxia & 0.91 & 6.3 \\
 \bottomrule
 \end{tabular}
-\caption{Simulated detection; replace with real numbers.}
+\caption{Simulated results (replace with real).}
 \end{table}
 
 \section{Discussion}\section{Conclusion}
