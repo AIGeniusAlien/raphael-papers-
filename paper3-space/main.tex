@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 \input{../shared/tex/preamble}
 
-\title{Multimodal AI for Astronaut Health Monitoring: Adapting \raphael\ to Space Medicine}
+\title{Multimodal AI for Astronaut Health Monitoring: Adapting \textit{Raphael} to Space Medicine}
 \author{Anthony Marra\\Villanova University}
 \date{}
 
@@ -9,23 +9,24 @@
 \maketitle
 
 \begin{abstract}
-We adapt \raphael\ to space-medicine simulations combining biometric streams, procedure logs, and image inputs. We outline domain transfer, synthetic data generation, and results on simulated off-nominal events.
+We adapt \textit{Raphael} to space-medicine simulations combining biometric streams, procedure logs, and image inputs. We outline domain transfer, synthetic data generation, and results on simulated off-nominal events.
 \end{abstract}
 
 \section{Introduction}\section{Related Work}
 
-\section{Methods}\subsection{Domain Adaptation}\subsection{Synthetic Environment Setup}
+\section{Methods}
+\subsection{Domain Adaptation Pipeline}
+\subsection{Synthetic EM Setup}
 
 \section{Results}
-\begin{table}[h]
+\begin{table}[t]
 \centering
 \begin{tabular}{lcc}
 \toprule
-Scenario & \AUROC & Time-to-Alert (s) \\
+Scenario & \AUROC & Time-to-Alert (s)\\
 \midrule
-Arrhythmia & 0.88 & 7.4 \\
-Dehydration & 0.85 & 9.6 \\
-Hypoxia & 0.91 & 6.3 \\
+Arrhythmia & 0.89 & 7.4 \\
+Hypoxia & 0.88 & 5.9 \\
 \bottomrule
 \end{tabular}
 \caption{Simulated results (replace with real).}
@@ -35,4 +36,5 @@ Hypoxia & 0.91 & 6.3 \\
 
 \bibliographystyle{unsrt}
 \bibliography{../shared/bib/references}
+
 \end{document}
