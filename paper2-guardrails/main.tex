@@ -9,17 +9,33 @@
 \maketitle
 
 \begin{abstract}
-We describe a layered safety stack for clinical LLMs: retrieval grounding, cost/interaction constraints, uncertainty calibration, and abstention. We provide ablations and reliability curves showing improved risk-sensitivity and stable latency.
+We describe a layered safety stack for clinical LLMs: retrieval grounding, close/intent constraints, uncertainty calibration, and abstention. We provide ablations and reliability curves showing improved risk-sensitivity and stable latency.
 \end{abstract}
 
 \section{Introduction}\section{Related Work}
 
-\section{Methods}\subsection{Uncertainty Calibration}\subsection{Deterministic Rules}\subsection{RAG Filtering}
+\section{Methods}
+\subsection{Uncertainty Calibration}
+\subsection{Deterministic Rules}
+\subsection{RAG Filtering}
 
 \section{Results}
+
+\begin{figure}[t]
+\centering
+% Will compile even if the placeholder PDF isn't present.
+\IfFileExists{../shared/figs/fig_reliability_placeholder.pdf}{%
+  \includegraphics[width=\linewidth]{../shared/figs/fig_reliability_placeholder.pdf}%
+}{%
+  \fbox{\parbox{0.9\linewidth}{\centering
+  Reliability curve placeholder (add PDF at \texttt{shared/figs/fig_reliability_placeholder.pdf})}}
+}
+\caption{Reliability diagram (ECE) -- replace with actual.}
+\end{figure}
 
 \section{Discussion}\section{Conclusion}
 
 \bibliographystyle{unsrt}
 \bibliography{../shared/bib/references}
+
 \end{document}
