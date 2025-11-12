@@ -1,5 +1,25 @@
-\section{Calibration Details}
-Temperature scaling on validation split; reliability diagram generation.
+\appendix
+\section*{Appendix: Guardrail Implementation Details}
+\label{sec:appendix}
 
-\section{Latency Measurement}
-Per-layer timing with 95\% CI; server specs documented for reproducibility.
+\subsection{Safety Layer Parameters}
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+Component & Parameter & Value \\
+\midrule
+Abstention threshold & Confidence cutoff & 0.85 \\
+Rule engine latency & ms/query & 42 \\
+Knowledge base size & Documents & 15{,}000 \\
+Max reasoning depth & Chain-of-thought hops & 4 \\
+\bottomrule
+\end{tabular}
+\caption{Representative configuration parameters used for the guardrail evaluation.}
+\end{table}
+
+\subsection{Dataset Splits}
+Training: 70 \%, Validation: 15 \%, Test: 15 \%.
+
+\subsection{Evaluation Hardware}
+Tests ran on a single NVIDIA A100 GPU (80 GB) with mixed-precision enabled.
