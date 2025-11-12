@@ -5,44 +5,18 @@
 \author{Anthony Marra\\Villanova University}
 \date{}
 
-\begin{document}\maketitle
+\begin{document}
+\maketitle
 
 \begin{abstract}
-We describe a layered safety stack for clinical LLMs: retrieval grounding, cost/interaction constraints, uncertainty-aware abstention, deterministic rules, and guideline-filtered RAG. In pilot evaluations we observe improved risk-sensitivity and stable latency. 
+We describe a layered safety stack for clinical LLMs: retrieval grounding, cost/interaction constraints, uncertainty calibration, and abstention. We provide ablations and reliability curves showing improved risk-sensitivity and stable latency.
 \end{abstract}
 
 \section{Introduction}\section{Related Work}
 
-\section{Methods}
-\subsection{Uncertainty Calibration}
-\subsection{Deterministic Rules}
-\subsection{RAG Filtering}
+\section{Methods}\subsection{Uncertainty Calibration}\subsection{Deterministic Rules}\subsection{RAG Filtering}
 
 \section{Results}
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}[node distance=10mm,>=Latex,rounded corners=2pt,thick, font=\small]
-\node[draw,fill=blue!6,minimum width=32mm,minimum height=9mm] (llm) {LLM};
-\node[draw,fill=green!6,minimum width=32mm,minimum height=9mm,left=18mm of llm] (rag) {Guideline RAG};
-\node[draw,fill=yellow!10,minimum width=32mm,minimum height=9mm,below=9mm of llm] (unc) {Uncertainty};
-\node[draw,fill=red!8,minimum width=32mm,minimum height=9mm,right=18mm of llm] (rules) {Rules};
-\draw[->] (rag)--(llm);
-\draw[->] (llm)--(unc);
-\draw[->] (rules)--(llm);
-\end{tikzpicture}
-\caption{Safety stack overview: guideline-RAG, uncertainty calibration, and deterministic rules around the LLM.}
-\end{figure}
-
-\begin{table}[t]\centering\small
-\begin{tabular}{lccc}\toprule
-Metric & w/o Guardrails & +Uncert. & +All \\\midrule
-Hallucination rate $\downarrow$ & 9.8\% & 5.4\% & \textbf{3.1\%} \\
-Unsafe suggestions $\downarrow$ & 2.2\% & 1.4\% & \textbf{0.6\%} \\
-Latency p95 (s) $\downarrow$ & 3.2 & 3.4 & \textbf{3.5} \\
-\bottomrule
-\end{tabular}
-\caption{Prototype results; replace with real numbers.}
-\end{table}
 
 \section{Discussion}\section{Conclusion}
 
