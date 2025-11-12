@@ -1,24 +1,24 @@
+% shared/tex/preamble
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{microtype}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
 \usepackage{times}
+\usepackage{microtype}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
 \usepackage{graphicx}
+\usepackage{amsmath, amssymb}
 \usepackage{booktabs}
-\usepackage{multirow}
-\usepackage{amsmath,amssymb}
-\usepackage[hidelinks]{hyperref}
-\usepackage{siunitx}
 \usepackage{caption}
-\usepackage{subcaption}
-\usepackage{xcolor}
-\usepackage{enumitem}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{adjustbox}
 
-% tight lists
-\setlist{nosep}
-
-% helpers
-\newcommand{\raphael}{\textsc{Raphael}}
-\newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO:} #1}}
+% TikZ for inline figures
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,shadows.blur}
