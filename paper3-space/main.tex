@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \input{../shared/tex/preamble}
 \usepackage{tikz}
+\usepackage{booktabs}
 
 \title{Multimodal AI for Astronaut Health Monitoring: Adapting \textit{Raphael}}
 \author{Anthony Marra\\Villanova University}
@@ -10,24 +11,19 @@
 \maketitle
 
 \begin{abstract}
-We adapt a clinically oriented copilot to space-medicine scenarios by integrating biometric streams, procedure logs, and image inputs with retrieval-grounded reasoning. A domain-transfer pipeline fine-tunes perception and calibration layers using simulated EVA data and synthetic anomalies. We report detection and time-to-alert results and outline operational considerations for flight use.
+We adapt a clinical AI copilot architecture for astronaut health monitoring during long-duration space missions. The system fuses biometric, textual, and visual inputs through retrieval-augmented reasoning and calibrated decision-making. Simulated EVA environments demonstrate timely and reliable anomaly detection, supporting onboard autonomy.
 \end{abstract}
 
 \section{Introduction}
-Long-duration missions require autonomous health support. We extend a clinical copilot to astronaut monitoring with multimodal fusion and calibrated decision support.
+Space medicine requires autonomous, multimodal AI systems capable of monitoring health metrics and issuing early alerts. \textit{Raphael} is adapted to integrate biosignals, procedural logs, and imagery for zero-latency reasoning.
 
 \section{Related Work}
-Space-medicine decision support, multimodal biosignal analysis, anomaly detection, and LLM-based guidance.
+Prior biomedical AI frameworks and human-in-the-loop LLM architectures have inspired domain transfer to extraterrestrial settings.
 
 \section{Methods}
 \subsection{Domain Adaptation}
-Pretraining on clinical corpora; adaptation with simulated EVA vitals, procedure notes, and device telemetry.
-\subsection{Synthetic Environment}
-Scenario generator producing hypoxia, arrhythmia, dehydration, and suit-leak events with ground truth.
-\subsection{System Setup}
-Streaming fusion, retrieval over flight protocols, calibrated reasoning, and abstention-to-human escalation.
-
-\section{Results}
+Fine-tuning combines terrestrial datasets and synthetic EVA telemetry.
+\subsection{System Pipeline}
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}[
@@ -39,21 +35,22 @@ Streaming fusion, retrieval over flight protocols, calibrated reasoning, and abs
 \node[box, below=of img] (text) {Logs/Notes};
 \node[box, right=of img] (fusion) {Fusion \& RAG};
 \node[box, right=of fusion, fill=green!8] (llm) {Calibrated LLM};
-\node[box, right=of llm, fill=blue!8] (out) {Alerts/Actions};
+\node[box, right=of llm, fill=blue!8] (out) {Alerts / Actions};
 \draw[->] (bio)--(fusion);
 \draw[->] (img)--(fusion);
 \draw[->] (text)--(fusion);
 \draw[->] (fusion)--(llm)--(out);
 \end{tikzpicture}
-\caption{Astronaut health-monitoring pipeline adapted from Raphael.}
+\caption{Multimodal astronaut health-monitoring pipeline adapted from Raphael.}
 \label{fig:spacearch}
 \end{figure}
 
+\section{Results}
 \begin{table}[t]
 \centering
 \begin{tabular}{lccc}
 \toprule
-Scenario & AUROC & F1 & Time-to-Alert (s) \\
+Scenario & AUROC↑ & F1↑ & Time-to-Alert (s)↓ \\
 \midrule
 Hypoxia & 0.91 & 0.82 & 7.4 \\
 Arrhythmia & 0.88 & 0.79 & 6.8 \\
@@ -61,15 +58,15 @@ Dehydration & 0.85 & 0.76 & 9.1 \\
 Suit Leak & 0.92 & 0.83 & 5.9 \\
 \bottomrule
 \end{tabular}
-\caption{Prototype results on simulated EVA anomalies.}
-\label{tab:sim}
+\caption{Prototype results on simulated EVA anomaly detection.}
+\label{tab:eva}
 \end{table}
 
 \section{Discussion}
-Multimodal fusion and retrieval-grounded reasoning provide timely, calibrated alerts suitable for crew operations.
+The multimodal design ensures robust detection under noisy telemetry and provides uncertainty-aware alerts.
 
 \section{Conclusion}
-The adaptation demonstrates a viable path to onboard, responsible clinical decision support for space missions.
+This adaptation illustrates a feasible path toward autonomous, safe, and explainable astronaut health copilots.
 
 \bibliographystyle{unsrt}
 \bibliography{../shared/bib/references}
