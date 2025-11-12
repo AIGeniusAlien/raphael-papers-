@@ -1,7 +1,6 @@
 \documentclass[11pt]{article}
 \input{../shared/tex/preamble}
 
-% Local macros to avoid undefined commands
 \newcommand{\AUROC}{\textsc{AUROC}}
 \newcommand{\CI}{\textsc{CI}}
 
@@ -13,7 +12,7 @@
 \maketitle
 
 \begin{abstract}
-We adapt \textit{Raphael} to space\-medicine simulations combining biometric streams, procedure logs, and image inputs. We outline domain transfer, synthetic data generation, and report simulated off\-nominal detection.
+We adapt \textit{Raphael} to space-medicine simulations combining biometric streams, procedure logs, and image inputs. We outline domain transfer, synthetic data generation, and report simulated off-nominal detection.
 \end{abstract}
 
 \section{Introduction}\section{Related Work}
@@ -26,7 +25,7 @@ We adapt \textit{Raphael} to space\-medicine simulations combining biometric str
 \centering
 \begin{tabular}{lcc}
 \toprule
-Scenario & \AUROC~$\uparrow$ & Time\-to\-Alert (s)~$\downarrow$ \\
+Scenario & \AUROC~$\uparrow$ & Time-to-Alert (s)~$\downarrow$ \\
 \midrule
 Arrhythmia & 0.89 & 7.4 \\
 Dehydration & 0.86 & 5.9 \\
@@ -39,6 +38,7 @@ Hypoxia & 0.91 & 6.3 \\
 
 \section{Discussion}\section{Conclusion}
 
+\nocite{*}
 \bibliographystyle{unsrt}
 \bibliography{../shared/bib/references}
 \end{document}
