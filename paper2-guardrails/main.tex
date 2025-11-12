@@ -9,7 +9,7 @@
 \maketitle
 
 \begin{abstract}
-We describe a layered safety stack for clinical LLMs: retrieval grounding, close\-intent constraints, uncertainty calibration, and abstention. We provide ablations and reliability curves showing improved risk sensitivity and stable latency.
+We describe a layered safety stack for clinical LLMs: retrieval grounding, close-intent constraints, uncertainty calibration, and abstention. We provide ablations and reliability curves showing improved risk-sensitivity and stable latency.
 \end{abstract}
 
 \section{Introduction}\section{Related Work}
@@ -22,7 +22,7 @@ We describe a layered safety stack for clinical LLMs: retrieval grounding, close
 \centering
 \begin{tikzpicture}[x=3.2cm,y=3.2cm]
   \draw[->] (0,0) -- (1.05,0) node[below] {Predicted};
-  \draw[->] (0,0) -- (0,1.05) node[left] {Observed};
+  \draw[->] (0,0) -- (0.0,1.05) node[left] {Observed};
   \draw[dashed] (0,0) -- (1,1);
   \draw[thick] plot[smooth] coordinates {(0,0) (0.2,0.10) (0.4,0.28) (0.6,0.55) (0.8,0.78) (1,0.92)};
   \node at (0.68,0.30) {\small Reliability curve};
@@ -33,6 +33,7 @@ We describe a layered safety stack for clinical LLMs: retrieval grounding, close
 
 \section{Discussion}\section{Conclusion}
 
+\nocite{*}
 \bibliographystyle{unsrt}
 \bibliography{../shared/bib/references}
 \end{document}
