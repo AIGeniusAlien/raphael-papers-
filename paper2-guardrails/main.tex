@@ -1,37 +1,20 @@
-\documentclass[11pt]{article}
-\input{../shared/macros.tex}
+\documentclass[10pt]{article}
+\input{../shared/tex/preamble}
 \title{Guardrail and Safety Frameworks for Clinical LLMs}
-\author{Anthony Marra (Villanova University)}
+\author{Anthony Marra\\Villanova University}
 \date{}
 \begin{document}\maketitle
-
 \begin{abstract}
-We formalize a layered guardrail framework for clinical LLMs comprising schema linting, dosing and interaction checks, uncertainty calibration, and abstention with human-in-the-loop. On a challenge set of unsafe prompts and ambiguous scenarios, our framework reduces hazardous outputs while preserving utility. We provide ablations and reliability curves, and release a reproducible evaluation harness.
+We describe a layered safety stack for clinical LLMs: retrieval grounding,
+dose/interaction constraints, uncertainty calibration, and abstention. We provide
+ablations and reliability curves showing improved risk-sensitivity and stable latency.
 \end{abstract}
-
-\section{Introduction}
-Clinical deployments demand predictable behavior and fail-safe mechanisms.
-
-\section{Related Work}
-Safety filters, fact-checking, uncertainty estimation, RLHF in healthcare.
-
-\section{Method}
-Layers: (1) \emph{Linting} for structured outputs; (2) \emph{Dose/Range} deterministic rules; (3) \emph{DDI} knowledge base; (4) \emph{Uncertainty} via verbalized confidence + calibration; (5) \emph{Abstain} + escalation.
-
-\section{Experiments}
-Challenge prompts across dosing, DDI, and ambiguous diagnostics; latency vs safety trade-offs.
-
-\input{results_tables.tex}
-
-\section{Results \& Analysis}
-Guardrails block hazards with minimal added latency; ablation shows uncertainty layer most predictive of safe abstention.
-
-\section{Discussion \& Limitations}
-Coverage of drug KBs, temporal guideline drift, human oversight.
-
-\bibliographystyle{unsrtnat}
-\bibliography{../shared/raphael.bib}
-
-\appendix
-\input{appendix.tex}
+\section{Introduction}\section{Related Work}
+\section{Methods}\subsection{Uncertainty Calibration}\subsection{Deterministic Rules}\subsection{RAG Filtering}
+\section{Results}
+\begin{figure}[t]\centering
+\includegraphics[width=\linewidth]{../shared/figs/fig_reliability_placeholder.pdf}
+\caption{Reliability diagram (ECE) — replace with actual.}\end{figure}
+\section{Discussion}\section{Conclusion}
+\bibliographystyle{unsrt}\bibliography{../shared/bib/references}
 \end{document}
