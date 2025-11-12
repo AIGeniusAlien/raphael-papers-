@@ -1,24 +1,16 @@
-% shared/tex/preamble
+% shared/tex/preamble.tex
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{geometry}
-\geometry{letterpaper, margin=1in}
-\usepackage{times}
 \usepackage{microtype}
-
-\usepackage{hyperref}
-\hypersetup{
-  colorlinks=true,
-  linkcolor=blue,
-  citecolor=blue,
-  urlcolor=blue
-}
-
 \usepackage{graphicx}
-\usepackage{amsmath, amssymb}
 \usepackage{booktabs}
-\usepackage{caption}
-
-% TikZ for inline figures
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,fit,shadows.blur}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+% Define macros used across papers
+\newcommand{\raphael}{\textit{Raphael}}
