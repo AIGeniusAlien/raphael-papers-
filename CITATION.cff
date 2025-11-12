@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use Raphael Beta in your research, please cite this repository."
+title: "Raphael Beta: A Clinical Copilot for Multimodal AI Decision Support"
+version: "v1.0-beta"
+date-released: "2025-11-02"
+authors:
+  - family-names: "Marra"
+    given-names: "Anthony"
+    affiliation: "Villanova University"
+    orcid: "https://orcid.org/0000-0000-0000-0000"  # replace if you have one
+repository-code: "https://github.com/AIGeniusAlien/raphael-papers-"
+license: "MIT-0"
+keywords:
+  - clinical decision support
+  - large language models
+  - multimodal AI
+  - safety guardrails
+  - SMART-on-FHIR
+preferred-citation:
+  type: article
+  title: "Raphael Beta: A Clinical Copilot for Multimodal AI Decision Support"
+  authors:
+    - family-names: "Marra"
+      given-names: "Anthony"
+      affiliation: "Villanova University"
+  journal: "arXiv"
+  year: 2025
+  notes: "Preprint; under submission to ML4H/AMIA."
